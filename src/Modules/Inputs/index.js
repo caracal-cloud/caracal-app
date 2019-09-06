@@ -1,0 +1,27 @@
+/** @jsx jsx */
+import { jsx } from 'theme-ui'
+import { Router, Redirect } from '@reach/router'
+
+import { Collars } from 'Modules/Inputs/Modules/Collars'
+import { CloudDrive } from 'Modules/Inputs/Modules/CloudDrive'
+import { Radios } from 'Modules/Inputs/Modules/Radios'
+
+import { AccountList } from './Modules/AccountList'
+import { SystemList } from './Modules/SystemList'
+import { CloudDriveCallback } from './Modules/CloudDriveCallback'
+export { AddButton } from './Components/AddButton'
+export { ItemCard } from './Components/ItemCard'
+
+export function Inputs() {
+  return (
+    <Router>
+      <Collars path="/collars" />
+      <AccountList path="/collars/accounts/:id" />
+      <CloudDrive path="/cloud-drive" />
+      <CloudDriveCallback path="/cloud-drive-callback" />
+      <Radios path="/radios" />
+      <SystemList path="/radios/systems/:id" />
+      <Redirect from="/" to="/inputs/collars" noThrow />
+    </Router>
+  )
+}
