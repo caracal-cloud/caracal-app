@@ -1,12 +1,13 @@
 /** @jsx jsx */
+import * as React from 'react'
 import { jsx } from 'theme-ui'
 import { Formik } from 'formik'
-import { Empty } from 'antd'
+import { Empty, Pagination } from 'antd'
 import dayjs from 'dayjs'
 
 import { PrivateLayout } from 'Layouts/PrivateLayout'
 import { ItemCard } from 'Modules/Inputs/Components/ItemCard'
-import { Card, List, Grid, Modal } from 'Modules/Core'
+import { Card, List, Grid, Modal, Divider } from 'Modules/Core'
 import { AddButton } from 'Modules/Inputs'
 
 import { useAddDrive } from './Hooks/useAddDrive'
@@ -64,12 +65,9 @@ export function CloudDrive() {
         </Card>
         <Card title="Current Docs" icon="unordered-list">
           <List loading={docs.metadata.isLoading}>
-            {!docs.metadata.isLoading && !docs.metadata.data.length && (
-              <Empty />
-            )}
-            {!docs.metadata.isLoading &&
-              docs.metadata.data.length > 0 &&
-              docs.metadata.data.map(doc => {
+            {docs.metadata.isEmpty && <Empty />}
+            {docs.metadata.hasResults &&
+              docs.metadata.results.map(doc => {
                 const date = dayjs(doc.datetimeCreated)
                 return (
                   <ItemCard
@@ -85,6 +83,20 @@ export function CloudDrive() {
                 )
               })}
           </List>
+          {docs.metadata.hasResults && (
+            <React.Fragment>
+              <Divider />
+              <div sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Pagination
+                  defaultCurrent={1}
+                  pageSize={3}
+                  size="small"
+                  total={docs.metadata.count}
+                  onChange={docs.handleChangePage}
+                />
+              </div>
+            </React.Fragment>
+          )}
         </Card>
       </Grid>
     </PrivateLayout>

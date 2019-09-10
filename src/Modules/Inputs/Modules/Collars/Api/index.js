@@ -8,6 +8,10 @@ export const deleteAccount = body => {
   return client.post('/collars/delete_account/', body)
 }
 
-export const getAccounts = () => {
-  return client.get('/collars/get_accounts/')
+export const getAccounts = (page = 1) => {
+  return client.get('/collars/get_accounts/', {
+    params: {
+      page
+    }
+  })
 }

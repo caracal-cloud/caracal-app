@@ -1,11 +1,12 @@
 /** @jsx jsx */
+import * as React from 'react'
 import { jsx } from 'theme-ui'
 import { Formik } from 'formik'
-import { Empty } from 'antd'
+import { Empty, Pagination } from 'antd'
 import dayjs from 'dayjs'
 
 import { PrivateLayout } from 'Layouts/PrivateLayout'
-import { Card, List, Grid, Modal } from 'Modules/Core'
+import { Card, List, Grid, Modal, Divider } from 'Modules/Core'
 import { ItemCard } from 'Modules/Inputs/Components/ItemCard'
 import { AddButton } from 'Modules/Inputs'
 
@@ -60,7 +61,8 @@ export function Radios() {
             {systems.metadata.isEmpty ? (
               <Empty />
             ) : (
-              systems.metadata.data.map(system => {
+              systems.metadata.hasResults &&
+              systems.metadata.results.map(system => {
                 const date = dayjs(system.datetimeCreated)
                 return (
                   <ItemCard
@@ -78,6 +80,20 @@ export function Radios() {
               })
             )}
           </List>
+          {systems.metadata.hasResults && (
+            <React.Fragment>
+              <Divider />
+              <div sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Pagination
+                  defaultCurrent={1}
+                  pageSize={3}
+                  size="small"
+                  total={systems.metadata.count}
+                  onChange={systems.handleChangePage}
+                />
+              </div>
+            </React.Fragment>
+          )}
         </Card>
       </Grid>
     </PrivateLayout>

@@ -16,14 +16,13 @@ const services = {
 const machine = Machine({
   id: 'addSystem',
   initial: 'idle',
+  on: {
+    OPEN_MODAL: {
+      target: 'adding'
+    }
+  },
   states: {
-    idle: {
-      on: {
-        OPEN_MODAL: {
-          target: 'adding'
-        }
-      }
-    },
+    idle: {},
     adding: {
       on: {
         SUBMIT: {

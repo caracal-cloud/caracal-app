@@ -6,9 +6,9 @@ import * as api from '../Api'
 import { handlers } from 'Modules/Core'
 
 const services = {
-  fetchAccounts: async () => {
-    const res = await api.getAccounts()
-    return R.path(['data', 'results'], res)
+  fetchAccounts: async ctx => {
+    const res = await api.getAccounts(ctx.page)
+    return res.data
   },
   deleteAccount: async (ctx, ev) => {
     const accountUid = ev.data.uid
@@ -22,6 +22,9 @@ const actions = {
   }),
   setSpecie: assign((ctx, ev) => {
     return R.assoc('specie', ev.data, ctx)
+  }),
+  setPage: assign((ctx, ev) => {
+    return R.assoc('page', ev.data.page, ctx)
   })
 }
 
@@ -29,7 +32,8 @@ const machine = Machine({
   id: 'collarsAccounts',
   initial: 'fetching',
   context: {
-    data: [],
+    page: 1,
+    data: null,
     specie: 'elephant'
   },
   states: {
@@ -65,6 +69,10 @@ const machine = Machine({
         },
         SET_SPECIE: {
           actions: 'setSpecie'
+        },
+        CHANGE_PAGE: {
+          actions: 'setPage',
+          target: 'fetching'
         }
       }
     },

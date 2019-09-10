@@ -6,9 +6,9 @@ import { message } from 'antd'
 import { handlers } from 'Modules/Core'
 
 const services = {
-  fetchAccounts: async () => {
-    const res = await api.getAccounts()
-    return R.path(['data', 'results'], res)
+  fetchAccounts: async ctx => {
+    const res = await api.getAccounts(ctx.page)
+    return res.data
   },
   deleteAccount: async (_, ev) => {
     const accountUid = ev.data.uid
@@ -19,6 +19,9 @@ const services = {
 const actions = {
   setAccounts: assign((ctx, ev) => {
     return R.assoc('data', ev.data, ctx)
+  }),
+  setPage: assign((ctx, ev) => {
+    return R.assoc('page', ev.data.page, ctx)
   })
 }
 
@@ -26,7 +29,8 @@ const machine = Machine({
   id: 'radiosSystems',
   initial: 'fetching',
   context: {
-    data: []
+    page: 1,
+    data: null
   },
   states: {
     fetching: {
@@ -57,6 +61,10 @@ const machine = Machine({
           target: 'deleting'
         },
         RELOAD: {
+          target: 'fetching'
+        },
+        CHANGE_PAGE: {
+          actions: 'setPage',
           target: 'fetching'
         }
       }

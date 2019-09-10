@@ -1,3 +1,4 @@
+import * as R from 'ramda'
 import { useMachine } from '@xstate/react'
 import { navigate } from '@reach/router'
 
@@ -7,8 +8,11 @@ export function useCollarsAccounts() {
   const [state, send] = useMachine(collarsAccountsMachine)
 
   const { data, specie } = state.context
+  const count = R.prop('count', data)
+  const results = R.prop('results', data)
   const isLoading = state.matches('fetching.loading')
-  const isEmpty = !isLoading && data && !data.length
+  const isEmpty = !isLoading && data && data.results && !data.results.length
+  const hasResults = results && results.length > 0
 
   function handleView(account) {
     return () => {
@@ -30,16 +34,23 @@ export function useCollarsAccounts() {
     send('RELOAD')
   }
 
+  function handleChangePage(page) {
+    send('CHANGE_PAGE', { data: { page } })
+  }
+
   return {
     handleView,
     handleDelete,
     handleReload,
     handleSelectSpecie,
+    handleChangePage,
     metadata: {
-      data,
+      count,
+      results,
       specie,
       isLoading,
-      isEmpty
+      isEmpty,
+      hasResults
     }
   }
 }

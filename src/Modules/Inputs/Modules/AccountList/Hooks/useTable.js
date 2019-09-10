@@ -1,9 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { useMemo } from 'react'
-import { message } from 'antd'
 import humanize from 'humanize-string'
-import copy from 'copy-text-to-clipboard'
 import dayjs from 'dayjs'
 
 import { Button, Badge, Icon } from 'Modules/Core'
@@ -12,24 +10,7 @@ export function useTable({ onEditItem }) {
   const columns = useMemo(
     () => [
       {
-        title: 'UID',
-        dataIndex: 'uid',
-        key: 'uid',
-        width: 100,
-        render: text => {
-          const abbr = `${text.slice(0, 8)}...`
-          const handleCopy = () => {
-            copy(text)
-            message.info('UID copied to clipboard')
-          }
-          return (
-            <Button intent="link" icon="copy" onClick={handleCopy}>
-              {abbr}
-            </Button>
-          )
-        }
-      },
-      {
+        width: 200,
         title: 'Name',
         dataIndex: 'name',
         key: 'name'
@@ -52,7 +33,6 @@ export function useTable({ onEditItem }) {
         render: text => (text ? humanize(text) : '---')
       },
       {
-        width: 160,
         title: 'Last reported',
         dataIndex: 'datetimeLastPosition',
         key: 'datetimeLastPosition',
@@ -68,7 +48,6 @@ export function useTable({ onEditItem }) {
         }
       },
       {
-        width: 120,
         title: 'Distance 24h',
         dataIndex: 'distanceDay',
         key: 'distanceDay',

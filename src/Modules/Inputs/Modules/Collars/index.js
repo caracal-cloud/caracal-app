@@ -1,7 +1,8 @@
 /** @jsx jsx */
+import * as React from 'react'
 import { jsx } from 'theme-ui'
 import { Formik } from 'formik'
-import { Empty } from 'antd'
+import { Empty, Pagination } from 'antd'
 
 import { PrivateLayout } from 'Layouts/PrivateLayout'
 import { ItemCard } from 'Modules/Inputs/Components/ItemCard'
@@ -161,7 +162,8 @@ export function Collars() {
             {accounts.metadata.isEmpty ? (
               <Empty />
             ) : (
-              accounts.metadata.data.map(account => (
+              accounts.metadata.hasResults &&
+              accounts.metadata.results.map(account => (
                 <ItemCard
                   key={account.uid}
                   title={account.title}
@@ -174,6 +176,20 @@ export function Collars() {
               ))
             )}
           </List>
+          {accounts.metadata.hasResults && (
+            <React.Fragment>
+              <Divider />
+              <div sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Pagination
+                  defaultCurrent={1}
+                  pageSize={3}
+                  size="small"
+                  total={accounts.metadata.count}
+                  onChange={accounts.handleChangePage}
+                />
+              </div>
+            </React.Fragment>
+          )}
         </Card>
       </Grid>
     </PrivateLayout>

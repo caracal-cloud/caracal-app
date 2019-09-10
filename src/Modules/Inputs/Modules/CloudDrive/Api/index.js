@@ -25,8 +25,12 @@ export const addNewDocument = async body => {
   return client.post('/drives/google/add_account/', body)
 }
 
-export const fetchDocs = async () => {
-  return client.get('/drives/google/get_accounts/')
+export const fetchDocs = async (page = 1) => {
+  return client.get('/drives/google/get_accounts/', {
+    params: {
+      page
+    }
+  })
 }
 
 export const deleteDoc = body => {

@@ -5,16 +5,9 @@ import * as api from '../Api'
 import { message } from 'antd'
 import { handlers } from 'Modules/Core'
 
-const actions = {
-  setData: assign((ctx, ev) => {
-    const data = R.path(['data', 'results'], ev)
-    return R.assoc('data', data, ctx)
-  })
-}
-
 const services = {
-  fetchDocs: async () => {
-    const res = await api.fetchDocs()
+  fetchDocs: async ctx => {
+    const res = await api.fetchDocs(ctx.page)
     return res.data
   },
   deleteDoc: async (_, ev) => {
@@ -22,11 +15,21 @@ const services = {
   }
 }
 
+const actions = {
+  setData: assign((ctx, ev) => {
+    return R.assoc('data', ev.data, ctx)
+  }),
+  setPage: assign((ctx, ev) => {
+    return R.assoc('page', ev.data.page, ctx)
+  })
+}
+
 const machine = Machine({
   id: 'listDocs',
   initial: 'fetching',
   context: {
-    data: []
+    page: 1,
+    data: null
   },
   states: {
     fetching: {
@@ -54,7 +57,11 @@ const machine = Machine({
     idle: {
       on: {
         RELOAD: 'fetching',
-        DELETE: 'deleting'
+        DELETE: 'deleting',
+        CHANGE_PAGE: {
+          actions: 'setPage',
+          target: 'fetching'
+        }
       }
     },
     deleting: {
