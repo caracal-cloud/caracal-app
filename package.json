@@ -6,7 +6,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "fix": "yarn lint --fix",
-    "lint": "eslint . --ext .js"
+    "lint": "eslint . --ext .js",
+    "deploy": "aws --profile tuma-admin s3 sync build/ s3://caracal-app && aws --profile tuma-admin cloudfront create-invalidation --distribution-id E2CB1CZSQM8RZQ --paths '/*'"
   },
   "dependencies": {
     "@emotion/core": "10.0.16",

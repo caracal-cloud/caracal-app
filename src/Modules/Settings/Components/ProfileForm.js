@@ -41,7 +41,7 @@ export function ProfileForm({ profile, form }) {
         large
         type="tel"
         leftIcon="phone"
-        placeholder="Type your phone..."
+        placeholder="Phone number"
         label="Phone"
       />
       <div sx={{ mt: 1 }}>

@@ -20,21 +20,21 @@ export function Sidebar(props) {
           icon="download"
           menuItems={[
             { text: 'Collars', to: '/inputs/collars' },
-            { text: 'Cloud Drive', to: '/inputs/cloud-drive' },
+            { text: 'Cloud Drives', to: '/inputs/cloud-drive' },
             { text: 'Radios', to: '/inputs/radios' }
           ]}
         >
-          Inputs
+          Sources
         </SidebarLink>
         <SidebarLink
           to="/outputs"
           icon="upload"
           menuItems={[
-            { text: 'Arcgis Online', to: '/outputs/arcgis-online' },
+            { text: 'ArcGIS Online', to: '/outputs/arcgis-online' },
             { text: 'Google Earth', to: '/outputs/google-earth' }
           ]}
         >
-          Outputs
+          Destinations
         </SidebarLink>
         <SidebarLink icon="setting" to="/settings">
           Settings

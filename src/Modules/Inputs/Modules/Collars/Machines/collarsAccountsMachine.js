@@ -20,8 +20,8 @@ const actions = {
   setAccounts: assign((ctx, ev) => {
     return R.assoc('data', ev.data, ctx)
   }),
-  setSpecie: assign((ctx, ev) => {
-    return R.assoc('specie', ev.data, ctx)
+  setSpecies: assign((ctx, ev) => {
+    return R.assoc('species', ev.data, ctx)
   }),
   setPage: assign((ctx, ev) => {
     return R.assoc('page', ev.data.page, ctx)
@@ -34,7 +34,7 @@ const machine = Machine({
   context: {
     page: 1,
     data: null,
-    specie: 'elephant'
+    species: 'elephant'
   },
   states: {
     fetching: {
@@ -67,8 +67,8 @@ const machine = Machine({
         RELOAD: {
           target: 'fetching'
         },
-        SET_SPECIE: {
-          actions: 'setSpecie'
+        SET_SPECIES: {
+          actions: 'setSpecies'
         },
         CHANGE_PAGE: {
           actions: 'setPage',

@@ -11,6 +11,12 @@ export function useTable({ onEditItem }) {
     () => [
       {
         width: 200,
+        title: 'Device ID',
+        dataIndex: 'device_id',
+        key: 'device_id'
+      },
+      {
+        width: 200,
         title: 'Name',
         dataIndex: 'name',
         key: 'name'

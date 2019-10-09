@@ -10,7 +10,7 @@ import { useGoogleEarth } from './Hooks/useGoogleEarth'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Outputs', to: '/outputs' },
+  { text: 'Destinations', to: '/outputs' },
   { text: 'Google Earth' }
 ]
 
@@ -25,7 +25,7 @@ function renderListItem(props) {
     >
       <List.ItemText>
         <a href={props.link} target="_blank" rel="noopener noreferrer">
-          {props.link.slice(0, 35)}...
+          {props.link.slice(0, 65)}...
         </a>
       </List.ItemText>
     </List.Item>
@@ -41,7 +41,7 @@ export function GoogleEarth() {
     <PrivateLayout title="Google Earth" breadcrumbs={breadcrumbs}>
       <Grid
         gridGap={2}
-        gridTemplateColumns={['minmax(450px, 1fr)', '1fr', '450px']}
+        gridTemplateColumns={['minmax(450px, 1fr)', '1fr', '600px']}
       >
         {metadata.isLoading && <Spin />}
         {keys &&

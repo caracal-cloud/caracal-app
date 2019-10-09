@@ -63,17 +63,18 @@ export function IndividualForm({ individual, form }) {
           allowClear
           noMargin
           label="Type"
-          placeholder="Select your type..."
+          placeholder="Select type"
         >
           <Select.Option value="forest">Forest</Select.Option>
           <Select.Option value="hybrid">Hybrid</Select.Option>
           <Select.Option value="savannah">Savannah</Select.Option>
+          <Select.Option value="other">Other</Select.Option>
         </Select>
         <Select
           {...formUtils.getSelectProps('status', form)}
           noMargin
           label="Status"
-          placeholder="Select your status..."
+          placeholder="Select status"
         >
           <Select.Option value="active">Active</Select.Option>
           <Select.Option value="broken">Broken</Select.Option>

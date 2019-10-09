@@ -22,7 +22,7 @@ export function Dashboard() {
         gridGap={4}
         gridTemplateColumns={['1fr', '1fr', '1.5fr 1fr', '600px 400px']}
       >
-        <Card title="Events" icon="alert" maxHeight={250}>
+        <Card title="Events" icon="alert" maxHeight={350}>
           <List loading={events.metadata.isLoading}>
             {events.metadata.isEmpty ? (
               <Empty />
@@ -42,7 +42,7 @@ export function Dashboard() {
             )}
           </List>
         </Card>
-        <Card title="Recent Changes" icon="container" maxHeight={250}>
+        <Card title="Recent Changes" icon="container" maxHeight={350}>
           <List loading={changes.metadata.isLoading}>
             {changes.metadata.isEmpty ? (
               <Empty />

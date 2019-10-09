@@ -11,8 +11,8 @@ import { useArcgis } from './Hooks/useArcgis'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Outputs', to: '/outputs' },
-  { text: 'Arcgis Online' }
+  { text: 'Destinations', to: '/outputs' },
+  { text: 'ArcGIS Online' }
 ]
 
 export function ArcgisOnline() {

@@ -17,7 +17,7 @@ import { useRadiosSystems } from './Hooks/useRadiosSystems'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Inputs', to: '/inputs' },
+  { text: 'Sources', to: '/inputs' },
   { text: 'Radios' }
 ]
 
@@ -28,7 +28,7 @@ export function Radios() {
   return (
     <PrivateLayout title="Radios" breadcrumbs={breadcrumbs}>
       <Modal
-        title="Adding Orbcomm"
+        title="Adding TRBOnet"
         onCancel={system.handleClose}
         visible={system.metadata.isShowing}
         footer={null}

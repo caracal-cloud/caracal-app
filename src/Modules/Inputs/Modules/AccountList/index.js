@@ -15,7 +15,7 @@ import { IndividualForm } from './Components/IndividualForm'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Inputs', to: '/inputs' },
+  { text: 'Sources', to: '/inputs' },
   { text: 'Collars', to: '/inputs/collars' },
   { text: 'Account List' }
 ]
@@ -54,7 +54,7 @@ export function AccountList(props) {
         columns={table.columns}
         pagination={{
           defaultCurrent: 1,
-          pageSize: 3,
+          pageSize: 12,
           size: 'small',
           total: getData('count', list),
           onChange: list.handleChangePage

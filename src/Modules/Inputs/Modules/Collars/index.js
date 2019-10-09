@@ -28,7 +28,7 @@ import { useAddSavannah } from './Hooks/useAddSavannah'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Inputs', to: '/inputs' },
+  { text: 'Sources', to: '/inputs' },
   { text: 'Collars' }
 ]
 
@@ -41,7 +41,7 @@ const types = {
 export function Collars() {
   const accounts = useCollarsAccounts()
   const addProps = {
-    type: accounts.metadata.specie,
+    type: accounts.metadata.species,
     onAdd: accounts.handleReload
   }
 
@@ -147,14 +147,24 @@ export function Collars() {
           <Select
             size="large"
             label="Species"
-            placeholder="Select the specie..."
+            placeholder="Select species"
             defaultValue="elephant"
-            value={accounts.metadata.specie}
-            onChange={accounts.handleSelectSpecie}
+            value={accounts.metadata.species}
+            onChange={accounts.handleSelectSpecies}
           >
+            <Select.Option value="wild_dog">African Wild Dog</Select.Option>
+            <Select.Option value="cheetah">Cheetah</Select.Option>
+            <Select.Option value="chimpanzee">Chimpanzee</Select.Option>
             <Select.Option value="elephant">Elephant</Select.Option>
-            <Select.Option value="girafe">Girafe</Select.Option>
+            <Select.Option value="girafe">Giraffe</Select.Option>
+            <Select.Option value="gorilla">Gorilla</Select.Option>
+            <Select.Option value="hyena">Hyena</Select.Option>
+            <Select.Option value="jackal">Jackal</Select.Option>
+            <Select.Option value="leopard">Leopard</Select.Option>
+            <Select.Option value="lion">Lion</Select.Option>
+            <Select.Option value="oryx">Oryx</Select.Option>
             <Select.Option value="rhinoceros">Rhinoceros</Select.Option>
+            <Select.Option value="other">Other</Select.Option>
           </Select>
         </Card>
         <Card title="Current Accounts" icon="unordered-list">

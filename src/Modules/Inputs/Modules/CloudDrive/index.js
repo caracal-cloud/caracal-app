@@ -18,7 +18,7 @@ import { SelectOptions } from './Components/SelectOptions'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Inputs', to: '/inputs' },
+  { text: 'Sources', to: '/inputs' },
   { text: 'Cloud Drive' }
 ]
 
@@ -63,7 +63,7 @@ export function CloudDrive() {
             </AddButton>
           </Grid>
         </Card>
-        <Card title="Current Docs" icon="unordered-list">
+        <Card title="Current Documents" icon="unordered-list">
           <List loading={docs.metadata.isLoading}>
             {docs.metadata.isEmpty && <Empty />}
             {docs.metadata.hasResults &&

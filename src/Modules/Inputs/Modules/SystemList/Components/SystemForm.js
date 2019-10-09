@@ -52,7 +52,7 @@ export function SystemForm({ individual, form }) {
           {...formUtils.getSelectProps('bloodType', form)}
           noMargin
           label="Bloodtype"
-          placeholder="Select your type..."
+          placeholder="Select type"
         >
           <Select.Option value="A+">A+</Select.Option>
           <Select.Option value="A-">A-</Select.Option>
@@ -66,14 +66,14 @@ export function SystemForm({ individual, form }) {
           {...formUtils.getInputProps('phoneNumber', form)}
           type="tel"
           leftIcon="phone"
-          placeholder="Type your phone..."
+          placeholder="Phone number"
           label="Phone"
         />
         <Select
           {...formUtils.getSelectProps('status', form)}
           noMargin
           label="Status"
-          placeholder="Select your status..."
+          placeholder="Select status"
         >
           <Select.Option value="active">Active</Select.Option>
           <Select.Option value="broken">Broken</Select.Option>

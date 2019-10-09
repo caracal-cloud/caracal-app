@@ -54,7 +54,7 @@ export function useIndividual({ onUpdateSuccess }) {
   const { item } = state.context
   const isSubmitting = state.matches('editting.updating.loading')
   const isShowingModal = state.matches('editting')
-  const modalTitle = item && `${item.name} (${item.uid})`
+  const modalTitle = item && `${item.device_id} - ${item.name}`
 
   function handleOpenModal(item) {
     return () => {

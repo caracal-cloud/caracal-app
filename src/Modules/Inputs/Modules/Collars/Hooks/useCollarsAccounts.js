@@ -7,7 +7,7 @@ import { collarsAccountsMachine } from '../Machines/collarsAccountsMachine'
 export function useCollarsAccounts() {
   const [state, send] = useMachine(collarsAccountsMachine)
 
-  const { data, specie } = state.context
+  const { data, species } = state.context
   const count = R.prop('count', data)
   const results = R.prop('results', data)
   const isLoading = state.matches('fetching.loading')
@@ -26,8 +26,8 @@ export function useCollarsAccounts() {
     }
   }
 
-  function handleSelectSpecie(val) {
-    send('SET_SPECIE', { data: val })
+  function handleSelectSpecies(val) {
+    send('SET_SPECIES', { data: val })
   }
 
   function handleReload() {
@@ -42,12 +42,12 @@ export function useCollarsAccounts() {
     handleView,
     handleDelete,
     handleReload,
-    handleSelectSpecie,
+    handleSelectSpecies,
     handleChangePage,
     metadata: {
       count,
       results,
-      specie,
+      species,
       isLoading,
       isEmpty,
       hasResults

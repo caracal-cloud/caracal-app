@@ -16,9 +16,9 @@ import { SystemForm } from './Components/SystemForm'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Inputs', to: '/inputs' },
+  { text: 'Sources', to: '/inputs' },
   { text: 'Radios', to: '/inputs/radios' },
-  { text: 'System List' }
+  { text: 'Radio Systems' }
 ]
 
 export function SystemList(props) {
