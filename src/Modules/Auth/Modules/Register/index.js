@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { Result } from 'antd'
-import { Link, navigate } from '@reach/router'
+import { navigate } from '@reach/router'
 
 import { PublicLayout } from 'Layouts/PublicLayout'
 import { AuthCard } from 'Modules/Auth'
@@ -16,38 +16,17 @@ export function Register() {
     <PublicLayout>
       {!isRegistered ? (
         <AuthCard>
-          <AuthCard.Header icon="user-add" title="Register" />
+          <AuthCard.Header icon="user-add" title="Sign Up" />
           <AuthCard.Body>
             <Formik {...formOpts} onSubmit={handleSubmit}>
               {form => (
                 <form onSubmit={form.handleSubmit}>
                   <Input
-                    {...formUtils.getInputProps('organizationName', form)}
-                    large
-                    type="text"
-                    leftIcon="shop"
-                    placeholder="Organization"
-                  />
-                  <Input
-                    {...formUtils.getInputProps('organizationShortName', form)}
-                    large
-                    type="text"
-                    leftIcon="shop"
-                    placeholder="Organization Short Name"
-                  />
-                  <Input
                     {...formUtils.getInputProps('accountName', form)}
                     large
                     type="text"
                     leftIcon="profile"
-                    placeholder="Full name"
-                  />
-                  <Input
-                    {...formUtils.getInputProps('accountPhoneNumber', form)}
-                    large
-                    type="tel"
-                    leftIcon="phone"
-                    placeholder="Phone Number"
+                    placeholder="Name"
                   />
                   <Input
                     {...formUtils.getInputProps('accountEmail', form)}
@@ -57,8 +36,16 @@ export function Register() {
                     placeholder="Email"
                   />
                   <Input
+                    {...formUtils.getInputProps('organizationName', form)}
+                    large
+                    type="text"
+                    leftIcon="shop"
+                    placeholder="Organization"
+                  />
+                  <Input
                     {...formUtils.getInputProps('accountPassword', form)}
                     large
+                    visibilityToggle
                     type="password"
                     leftIcon="lock"
                     placeholder="Password"
@@ -77,14 +64,22 @@ export function Register() {
                     disabled={!form.dirty}
                     loading={isRegistering}
                   >
-                    Create Your Account
+                    Get started
                   </Button>
                 </form>
               )}
             </Formik>
           </AuthCard.Body>
           <AuthCard.Footer>
-            Already have an account? <Link to="/login">Login</Link>
+            By continuing you agree to
+            <br /> the Caracal's{' '}
+            <a
+              href="https://caracal.cloud/terms"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Terms of Service
+            </a>
           </AuthCard.Footer>
         </AuthCard>
       ) : (

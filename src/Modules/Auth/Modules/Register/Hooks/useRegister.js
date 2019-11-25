@@ -3,32 +3,16 @@ import { useMachine } from '@xstate/react'
 import * as yup from 'yup'
 
 import { registerMachine } from '../Machines/registerMachine'
-import { formUtils } from 'Modules/Core'
-
-const { oneWordRegExp, phoneNumberRegExp } = formUtils.validations
 
 const formOpts = {
   initialValues: {
-    organizationName: '',
-    organizationShortName: '',
     accountName: '',
     accountEmail: '',
-    accountPhoneNumber: '',
+    organizationName: '',
     accountPassword: '',
     accountConfirmPassword: ''
   },
   validationSchema: yup.object().shape({
-    organizationName: yup
-      .string()
-      .label('Organization name')
-      .min(2)
-      .required(),
-    organizationShortName: yup
-      .string()
-      .label('Organization short name')
-      .matches(oneWordRegExp, 'Please enter only one word')
-      .min(4)
-      .required(),
     accountName: yup
       .string()
       .label('Account name')
@@ -39,10 +23,10 @@ const formOpts = {
       .label('Email')
       .email()
       .required(),
-    accountPhoneNumber: yup
+    organizationName: yup
       .string()
-      .label('Phone number')
-      .matches(phoneNumberRegExp, 'Please enter a valid phone number')
+      .label('Organization')
+      .min(2)
       .required(),
     accountPassword: yup
       .string()

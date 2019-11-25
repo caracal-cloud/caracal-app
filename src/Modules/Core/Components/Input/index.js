@@ -6,10 +6,11 @@ import { Icon } from 'Modules/Core'
 import * as styles from './styles'
 
 export function Input({ error, label, leftIcon, large, noMargin, ...props }) {
+  const Component = props.type === 'password' ? BaseInput.Password : BaseInput
   return (
     <div sx={styles.formGroup(noMargin, error)}>
       {label && <div sx={styles.label(error)}>{label}</div>}
-      <BaseInput
+      <Component
         {...props}
         {...(leftIcon && {
           prefix: <Icon type={leftIcon} size={14} color="gray.4" />
