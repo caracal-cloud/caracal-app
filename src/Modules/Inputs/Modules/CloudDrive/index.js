@@ -68,11 +68,13 @@ export function CloudDrive() {
             {docs.metadata.isEmpty && <Empty />}
             {docs.metadata.hasResults &&
               docs.metadata.results.map(doc => {
+                console.log(doc)
                 const date = dayjs(doc.datetimeCreated)
                 return (
                   <ItemCard
                     key={doc.uid}
                     title={doc.title}
+                    onView={() => window.open(doc.link)}
                     onDelete={docs.handleDelete(doc.uid)}
                     label={
                       <div sx={{ fontSize: 1, color: 'gray' }}>
