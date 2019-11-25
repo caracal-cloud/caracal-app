@@ -16,14 +16,17 @@ const formOpts = {
     name: yup
       .string()
       .label('Name')
+      .nullable()
       .required(),
     sex: yup
       .string()
       .label('Sex')
+      .nullable()
       .required(),
     status: yup
       .string()
       .label('Status')
+      .nullable()
       .required(),
     subtype: yup
       .string()
