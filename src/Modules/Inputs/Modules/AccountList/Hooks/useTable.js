@@ -27,6 +27,7 @@ export function useTable({ onEditItem }) {
         dataIndex: 'sex',
         key: 'sex',
         render: text => {
+          if (!text) return '---'
           const icon = text === 'female' ? 'woman' : 'man'
           return <Icon type={icon} sx={{ fontSize: 25 }} />
         }
