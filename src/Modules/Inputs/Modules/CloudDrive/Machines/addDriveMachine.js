@@ -53,12 +53,6 @@ const actions = {
   })
 }
 
-const guards = {
-  isAuthenticated: () => {
-    return JSON.parse(localStorage.getItem('cloud-drive-auth'))
-  }
-}
-
 const machine = Machine({
   id: 'addDrive',
   initial: 'idle',
@@ -68,10 +62,9 @@ const machine = Machine({
     sheets: null
   },
   on: {
-    OPEN_MODAL: [
-      { target: 'gettingFiles', cond: 'isAuthenticated' },
-      { target: 'authenticating' }
-    ]
+    OPEN_MODAL: {
+      target: 'authenticating'
+    }
   },
   states: {
     idle: {},
@@ -208,6 +201,5 @@ const machine = Machine({
 
 export const addDriveMachine = machine.withConfig({
   actions,
-  services,
-  guards
+  services
 })

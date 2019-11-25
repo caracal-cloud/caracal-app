@@ -68,7 +68,6 @@ export function CloudDrive() {
             {docs.metadata.isEmpty && <Empty />}
             {docs.metadata.hasResults &&
               docs.metadata.results.map(doc => {
-                console.log(doc)
                 const date = dayjs(doc.datetimeCreated)
                 return (
                   <ItemCard
