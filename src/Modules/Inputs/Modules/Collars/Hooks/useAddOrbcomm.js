@@ -6,7 +6,7 @@ import { addOrbcommMachine } from '../Machines/addOrbcommMachine'
 
 const formOpts = {
   initialValues: {
-    orbcommTimezone: 'Africa/Abidjan',
+    orbcommTimezone: timezones[0].offset,
     orbcommCompanyId: '',
     outputAgol: false,
     outputDatabase: false,

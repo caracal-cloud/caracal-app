@@ -60,7 +60,7 @@ export function Collars() {
           {...orbcomm.formOpts}
           render={form => (
             <form onSubmit={form.handleSubmit}>
-              <Grid gap={3} gridTemplateColumns="repeat(2, 1fr)">
+              <Grid gap={3} gridTemplateColumns="1.5fr 1fr">
                 <Select
                   {...formUtils.getSelectProps('orbcommTimezone', form)}
                   showSearch
@@ -69,11 +69,19 @@ export function Collars() {
                   label="Timezone"
                   placeholder="Select your timezone..."
                 >
-                  {orbcomm.metadata.timezones.map(timezone => (
-                    <Select.Option key={timezone} value={timezone}>
-                      {timezone}
-                    </Select.Option>
-                  ))}
+                  {orbcomm.metadata.timezones.map(t => {
+                    const text =
+                      t.text.length > 32 ? `${t.text.slice(0, 32)}...` : t.text
+                    return (
+                      <Select.OptGroup key={t.value} label={text}>
+                        {t.utc.map(utc => (
+                          <Select.Option key={utc} value={t.offset}>
+                            {utc}
+                          </Select.Option>
+                        ))}
+                      </Select.OptGroup>
+                    )
+                  })}
                 </Select>
                 <Input
                   {...formUtils.getInputProps('orbcommCompanyId', form)}

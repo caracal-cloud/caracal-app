@@ -5,7 +5,7 @@ import * as api from '../Api'
 import { handlers } from 'Modules/Core'
 
 const services = {
-  addNewOrbcomm: async (ctx, ev) => {
+  addNewOrbcomm: async (_, ev) => {
     return api.addAccount({
       ...ev.data,
       provider: 'orbcomm'

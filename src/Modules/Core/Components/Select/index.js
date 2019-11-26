@@ -17,3 +17,4 @@ export function Select({ error, label, children, className, ...props }) {
 }
 
 Select.Option = BaseSelect.Option
+Select.OptGroup = BaseSelect.OptGroup
