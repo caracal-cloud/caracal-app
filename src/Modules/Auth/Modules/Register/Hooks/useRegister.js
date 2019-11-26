@@ -1,4 +1,5 @@
 import * as R from 'ramda'
+import { useState, useEffect } from 'react'
 import { useMachine } from '@xstate/react'
 import * as yup from 'yup'
 
@@ -10,7 +11,7 @@ const formOpts = {
     accountEmail: '',
     organizationName: '',
     accountPassword: '',
-    accountConfirmPassword: ''
+    accountPasswordConfirm: ''
   },
   validationSchema: yup.object().shape({
     accountName: yup
@@ -43,7 +44,9 @@ const formOpts = {
 
 export function useRegister() {
   const [state, send] = useMachine(registerMachine)
+  const [count, setCount] = useState(0)
 
+  const { credentials } = state.context
   const isRegistered = state.matches('registered')
   const isRegistering = state.matches('registering.loading')
 
@@ -52,10 +55,20 @@ export function useRegister() {
     send('SUBMIT', { data })
   }
 
+  useEffect(() => {
+    if (!isRegistered) return
+    const id = setInterval(() => setCount(R.inc), 1000)
+    return () => clearInterval(id)
+  }, [isRegistered])
+
   return {
     formOpts,
     handleSubmit,
-    isRegistering,
-    isRegistered
+    metadata: {
+      isRegistering,
+      isRegistered,
+      count,
+      credentials
+    }
   }
 }

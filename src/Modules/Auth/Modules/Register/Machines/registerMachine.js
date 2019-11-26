@@ -1,21 +1,39 @@
-import { Machine } from 'xstate'
+import { Machine, assign } from 'xstate'
+import { navigate } from '@reach/router'
 
-import { api } from 'Modules/Auth'
 import { handlers } from 'Modules/Core'
+import { api, setLocalStorageToken } from 'Modules/Auth'
 
 const services = {
   register: async (_, ev) => {
-    try {
-      return api.register(ev.data)
-    } catch (err) {
-      return Promise.reject(err)
-    }
+    return api.register(ev.data)
+  },
+  login: async ctx => {
+    const res = await api.login(ctx.credentials)
+    setLocalStorageToken(res.data)
+    return res.data
+  }
+}
+
+const actions = {
+  setCredentials: assign({
+    credentials: (_, { data }) => ({
+      email: data.accountEmail,
+      password: data.accountPassword
+    })
+  }),
+  goToDashboard: () => {
+    navigate('/')
   }
 }
 
 const machine = Machine({
   id: 'register',
   initial: 'idle',
+  context: {
+    count: 0,
+    credentials: null
+  },
   states: {
     idle: {
       on: {
@@ -28,6 +46,7 @@ const machine = Machine({
       initial: 'loading',
       states: {
         loading: {
+          entry: 'setCredentials',
           invoke: {
             src: 'register',
             onDone: 'success',
@@ -45,15 +64,26 @@ const machine = Machine({
         }
       },
       onDone: {
-        target: 'registered'
+        target: 'login'
+      }
+    },
+    login: {
+      invoke: {
+        src: 'login',
+        onDone: 'registered'
       }
     },
     registered: {
-      type: 'final'
+      after: {
+        5000: {
+          actions: 'goToDashboard'
+        }
+      }
     }
   }
 })
 
 export const registerMachine = machine.withConfig({
-  services
+  services,
+  actions
 })

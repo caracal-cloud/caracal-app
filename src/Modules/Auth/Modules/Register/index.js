@@ -10,11 +10,11 @@ import { useRegister } from './Hooks/useRegister'
 import { Formik } from 'formik'
 
 export function Register() {
-  const { formOpts, handleSubmit, isRegistering, isRegistered } = useRegister()
+  const { formOpts, handleSubmit, metadata } = useRegister()
 
   return (
     <PublicLayout>
-      {!isRegistered ? (
+      {!metadata.isRegistered ? (
         <AuthCard>
           <AuthCard.Header icon="user-add" title="Sign Up" />
           <AuthCard.Body>
@@ -62,7 +62,7 @@ export function Register() {
                     type="submit"
                     intent="primary"
                     disabled={!form.dirty}
-                    loading={isRegistering}
+                    loading={metadata.isRegistering}
                   >
                     Get started
                   </Button>
@@ -88,14 +88,14 @@ export function Register() {
             sx={{ py: 2, px: 2 }}
             status="success"
             title="Successfully registered!"
-            subTitle="We sent an email from confirmation to you. Check your email then login."
+            subTitle={`We're redirecting you to our app in ${metadata.count} seconds`}
             extra={[
               <Button
                 type="primary"
                 key="console"
-                onClick={() => navigate('/login')}
+                onClick={() => navigate('/')}
               >
-                Go to Login
+                Go to App
               </Button>
             ]}
           />
