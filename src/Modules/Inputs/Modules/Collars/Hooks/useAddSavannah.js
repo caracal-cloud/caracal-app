@@ -1,4 +1,5 @@
 import { useMachine } from '@xstate/react'
+import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import { addSavannahMachine } from '../Machines/addSavannahMachine'
@@ -28,6 +29,11 @@ const formOpts = {
 }
 
 export function useAddSavannah({ onAdd, type }) {
+  const form = useFormik({
+    ...formOpts,
+    onSubmit: handleSubmit
+  })
+
   const [state, send] = useMachine(
     addSavannahMachine.withConfig({
       actions: {
@@ -53,10 +59,7 @@ export function useAddSavannah({ onAdd, type }) {
   }
 
   return {
-    formOpts: {
-      ...formOpts,
-      onSubmit: handleSubmit
-    },
+    form,
     handleOpen,
     handleClose,
     metadata: {
