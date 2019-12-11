@@ -56,9 +56,8 @@ export function Collars() {
         visible={orbcomm.metadata.isShowing}
         footer={null}
       >
-        <Formik
-          {...orbcomm.formOpts}
-          render={form => (
+        <Formik {...orbcomm.formOpts}>
+          {form => (
             <form onSubmit={form.handleSubmit}>
               <Grid gap={3} gridTemplateColumns="1.5fr 1fr">
                 <Select
@@ -98,7 +97,7 @@ export function Collars() {
               />
             </form>
           )}
-        />
+        </Formik>
       </Modal>
       <Modal
         title="Adding Savannah"
@@ -106,9 +105,8 @@ export function Collars() {
         visible={savannah.metadata.isShowing}
         footer={null}
       >
-        <Formik
-          {...savannah.formOpts}
-          render={form => (
+        <Formik {...savannah.formOpts}>
+          {form => (
             <form onSubmit={form.handleSubmit}>
               <Grid gap={3} gridTemplateColumns="repeat(2, 1fr)">
                 <Input
@@ -136,7 +134,7 @@ export function Collars() {
               />
             </form>
           )}
-        />
+        </Formik>
       </Modal>
       <Grid
         gridGap={4}

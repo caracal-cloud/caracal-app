@@ -33,9 +33,8 @@ export function Radios() {
         visible={system.metadata.isShowing}
         footer={null}
       >
-        <Formik
-          {...system.formOpts}
-          render={props => (
+        <Formik {...system.formOpts}>
+          {props => (
             <form onSubmit={props.handleSubmit}>
               <StorageCheckbox {...props} sx={{ mt: 0 }} />
               <AddModalFooter
@@ -45,7 +44,7 @@ export function Radios() {
               />
             </form>
           )}
-        />
+        </Formik>
       </Modal>
       <Grid
         gridGap={4}
