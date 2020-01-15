@@ -18,7 +18,8 @@ export function EditAccountModal({ account }) {
         {...account.formOpts}
         onSubmit={account.handleSubmit}
         initialValues={R.path(['metadata', 'data', 'outputs'], account)}
-        render={props => (
+      >
+        {props => (
           <form onSubmit={props.handleSubmit}>
             <StorageCheckbox {...props} />
             <Modal.Footer>
@@ -35,7 +36,7 @@ export function EditAccountModal({ account }) {
             </Modal.Footer>
           </form>
         )}
-      />
+      </Formik>
     </Modal>
   )
 }

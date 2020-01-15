@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import * as React from 'react'
 import { jsx } from 'theme-ui'
-import { Formik } from 'formik'
 import { Empty, Pagination } from 'antd'
 
 import { PrivateLayout } from 'Layouts/PrivateLayout'
@@ -56,49 +55,41 @@ export function Collars() {
         visible={orbcomm.metadata.isShowing}
         footer={null}
       >
-        <Formik
-          {...orbcomm.formOpts}
-          render={form => (
-            <form onSubmit={form.handleSubmit}>
-              <Grid gap={3} gridTemplateColumns="1.5fr 1fr">
-                <Select
-                  {...formUtils.getSelectProps('orbcommTimezone', form)}
-                  showSearch
-                  noMargin
-                  size="large"
-                  label="Timezone"
-                  placeholder="Select your timezone..."
-                >
-                  {orbcomm.metadata.timezones.map(t => {
-                    const text =
-                      t.text.length > 32 ? `${t.text.slice(0, 32)}...` : t.text
-                    return (
-                      <Select.OptGroup key={t.value} label={text}>
-                        {t.utc.map(utc => (
-                          <Select.Option key={utc} value={t.offset}>
-                            {utc}
-                          </Select.Option>
-                        ))}
-                      </Select.OptGroup>
-                    )
-                  })}
-                </Select>
-                <Input
-                  {...formUtils.getInputProps('orbcommCompanyId', form)}
-                  type="text"
-                  label="Company ID"
-                  placeholder="You company id..."
-                />
-              </Grid>
-              <StorageCheckbox {...form} />
-              <AddModalFooter
-                disabled={!form.dirty}
-                loading={orbcomm.metadata.isAdding}
-                onCancel={orbcomm.handleClose}
-              />
-            </form>
-          )}
-        />
+        <form onSubmit={orbcomm.form.handleSubmit}>
+          <Grid gap={3} gridTemplateColumns="1.5fr 1fr">
+            <Select
+              {...formUtils.getSelectProps('orbcommTimezone', orbcomm.form)}
+              showSearch
+              noMargin
+              size="large"
+              label="Timezone"
+              placeholder="Select your timezone..."
+            >
+              {orbcomm.metadata.timezones.map(t => {
+                const text =
+                  t.text.length > 32 ? `${t.text.slice(0, 32)}...` : t.text
+
+                return (
+                  <Select.Option key={text} value={`${t.text}@${t.offset}`}>
+                    {text}
+                  </Select.Option>
+                )
+              })}
+            </Select>
+            <Input
+              {...formUtils.getInputProps('orbcommCompanyId', orbcomm.form)}
+              type="text"
+              label="Company ID"
+              placeholder="You company id..."
+            />
+          </Grid>
+          <StorageCheckbox {...orbcomm.form} />
+          <AddModalFooter
+            disabled={!orbcomm.form.dirty}
+            loading={orbcomm.metadata.isAdding}
+            onCancel={orbcomm.handleClose}
+          />
+        </form>
       </Modal>
       <Modal
         title="Adding Savannah"
@@ -106,37 +97,38 @@ export function Collars() {
         visible={savannah.metadata.isShowing}
         footer={null}
       >
-        <Formik
-          {...savannah.formOpts}
-          render={form => (
-            <form onSubmit={form.handleSubmit}>
-              <Grid gap={3} gridTemplateColumns="repeat(2, 1fr)">
-                <Input
-                  {...formUtils.getInputProps('savannahTrackingUsername', form)}
-                  noMargin
-                  type="text"
-                  leftIcon="user"
-                  label="Username"
-                  placeholder="Your username..."
-                />
-                <Input
-                  {...formUtils.getInputProps('savannahTrackingPassword', form)}
-                  noMargin
-                  type="password"
-                  leftIcon="lock"
-                  label="Password"
-                  placeholder="Your password..."
-                />
-              </Grid>
-              <StorageCheckbox {...form} />
-              <AddModalFooter
-                disabled={!form.dirty}
-                loading={savannah.metadata.isAdding}
-                onCancel={savannah.handleClose}
-              />
-            </form>
-          )}
-        />
+        <form onSubmit={savannah.form.handleSubmit}>
+          <Grid gap={3} gridTemplateColumns="repeat(2, 1fr)">
+            <Input
+              {...formUtils.getInputProps(
+                'savannahTrackingUsername',
+                savannah.form
+              )}
+              noMargin
+              type="text"
+              leftIcon="user"
+              label="Username"
+              placeholder="Your username..."
+            />
+            <Input
+              {...formUtils.getInputProps(
+                'savannahTrackingPassword',
+                savannah.form
+              )}
+              noMargin
+              type="password"
+              leftIcon="lock"
+              label="Password"
+              placeholder="Your password..."
+            />
+          </Grid>
+          <StorageCheckbox {...savannah.form} />
+          <AddModalFooter
+            disabled={!savannah.form.dirty}
+            loading={savannah.metadata.isAdding}
+            onCancel={savannah.handleClose}
+          />
+        </form>
       </Modal>
       <Grid
         gridGap={4}

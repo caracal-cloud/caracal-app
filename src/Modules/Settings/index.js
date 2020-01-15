@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
+import { Redirect, Router, Link } from '@reach/router'
 
 import { PrivateLayout } from 'Layouts/PrivateLayout'
-import { Card, Grid } from 'Modules/Core'
+import { Grid, Menu, Icon } from 'Modules/Core'
 
-import { useProfile } from './Hooks/useProfile'
-import { Formik } from 'formik'
-import { ProfileForm } from './Components/ProfileForm'
+import * as styles from './styles'
+import { Profile } from './Modules/Profile'
+import { Alerts } from './Modules/Alerts'
 
 const breadcrumbs = [
   {
@@ -18,21 +19,38 @@ const breadcrumbs = [
   }
 ]
 
-export function Settings() {
-  const profile = useProfile()
+const activeMenu = location => {
+  const pathname = location && location.pathname.match(/(\/settings\/)(\w+)/)
+  return pathname ? { selectedKeys: [pathname[2]] } : null
+}
 
+export function Settings({ location }) {
   return (
     <PrivateLayout title="Settings" breadcrumbs={breadcrumbs}>
-      <Grid gridTemplateColumns={['minmax(300px, 1fr)', '1fr', '450px']}>
-        <Card
-          title="Profile"
-          icon="profile"
-          loading={profile.metadata.isFetching}
-        >
-          <Formik {...profile.formOpts} onSubmit={profile.handleSubmit}>
-            {form => <ProfileForm profile={profile} form={form} />}
-          </Formik>
-        </Card>
+      <Grid
+        gridGap={4}
+        gridTemplateColumns={['minmax(300px, 1fr)', '1fr', '200px 450px']}
+        gridTemplateRows={['auto auto', 'auto auto', '1fr']}
+      >
+        <Menu sx={styles.menu} {...activeMenu(location)}>
+          <Menu.Item key="profile">
+            <Link to="./profile">
+              <Icon type="user" />
+              Profile
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="alerts">
+            <Link to="./alerts">
+              <Icon type="alert" />
+              Alerts
+            </Link>
+          </Menu.Item>
+        </Menu>
+        <Router>
+          <Profile path="/profile" />
+          <Alerts path="/alerts" />
+          <Redirect from="/" to="/settings/profile" noThrow />
+        </Router>
       </Grid>
     </PrivateLayout>
   )
