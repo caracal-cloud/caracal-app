@@ -1,4 +1,4 @@
-import { Machine, assign } from 'xstate'
+import { Machine } from 'xstate'
 import { navigate } from '@reach/router'
 
 import { handlers } from 'Modules/Core'
@@ -6,22 +6,13 @@ import { api, setLocalStorageToken } from 'Modules/Auth'
 
 const services = {
   register: async (_, ev) => {
-    return api.register(ev.data)
-  },
-  login: async ctx => {
-    const res = await api.login(ctx.credentials)
+    const res = await api.register(ev.data)
     setLocalStorageToken(res.data)
     return res.data
   }
 }
 
 const actions = {
-  setCredentials: assign({
-    credentials: (_, { data }) => ({
-      email: data.accountEmail,
-      password: data.accountPassword
-    })
-  }),
   goToDashboard: () => {
     navigate('/')
   }
@@ -46,7 +37,6 @@ const machine = Machine({
       initial: 'loading',
       states: {
         loading: {
-          entry: 'setCredentials',
           invoke: {
             src: 'register',
             onDone: 'success',
@@ -64,13 +54,7 @@ const machine = Machine({
         }
       },
       onDone: {
-        target: 'login'
-      }
-    },
-    login: {
-      invoke: {
-        src: 'login',
-        onDone: 'registered'
+        target: 'registered'
       }
     },
     registered: {
