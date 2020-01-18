@@ -28,6 +28,7 @@
     "ramda": "^0.26.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "react-query": "^0.3.24",
     "react-scripts": "3.3.0",
     "theme-ui": "0.2.52",
     "xstate": "^4.7.6",

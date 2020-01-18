@@ -19,7 +19,7 @@ export function SidebarLink(props) {
     if (!props.menuItems) return null
     return (
       <Menu sx={{ bg: 'dark.1' }} theme="dark">
-        {props.menuItems.map((menu, idx) => (
+        {props.menuItems.filter(Boolean).map((menu, idx) => (
           <Menu.Item key={idx}>
             <Link to={menu.to}>{menu.text}</Link>
           </Menu.Item>

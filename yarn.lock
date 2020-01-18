@@ -1864,6 +1864,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-query@^0.3.0":
+  version "0.3.7"
+  resolved "https://registry.npmjs.org/@types/react-query/-/react-query-0.3.7.tgz#4ecaa3df749de46b5dadc42a2b97997651b79873"
+  integrity sha512-tmWT9YLwE6ckFKY5n08cg694fRLuuAj1IOzBRL/O3n0QuGFld/hWnE+Ms8kuiyMfe62ESvxAh59cLitXODcaQA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-slick@^0.23.4":
   version "0.23.4"
   resolved "https://registry.npmjs.org/@types/react-slick/-/react-slick-0.23.4.tgz#c97e2a9e7e3d1933c68593b8e82752fab1e8ce53"
@@ -10245,6 +10252,13 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-query@^0.3.24:
+  version "0.3.24"
+  resolved "https://registry.npmjs.org/react-query/-/react-query-0.3.24.tgz#0be07a7a8bf897ea1940643c0d0d34d6b65f5900"
+  integrity sha512-cAdUWSmaNX314zmyNaMiGwUfSe9htGiCGOyeggLbusbeQShdQETlBlwKSNrn+hdc2mMLK0STD0FRbSGQFWJ8RQ==
+  dependencies:
+    "@types/react-query" "^0.3.0"
 
 react-scripts@3.3.0:
   version "3.3.0"

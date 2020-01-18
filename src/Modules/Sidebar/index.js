@@ -6,24 +6,19 @@ import { useLogout } from 'Modules/Auth'
 
 import * as styles from './styles'
 import { SidebarLink } from './Components/SidebarLink'
+import { useInputsMenuItems } from './Hooks/useInputsMenuItems'
 
 export function Sidebar(props) {
   const { logout } = useLogout()
+  const inputsMenuItems = useInputsMenuItems()
+
   return (
     <div className={props.className} sx={styles.wrapper}>
       <div sx={styles.menu}>
         <SidebarLink icon="dashboard" to="/dashboard">
           Dashboard
         </SidebarLink>
-        <SidebarLink
-          to="/inputs"
-          icon="download"
-          menuItems={[
-            { text: 'Collars', to: '/inputs/collars' },
-            { text: 'Cloud Drives', to: '/inputs/cloud-drive' },
-            { text: 'Radios', to: '/inputs/radios' }
-          ]}
-        >
+        <SidebarLink to="/inputs" icon="download" menuItems={inputsMenuItems}>
           Sources
         </SidebarLink>
         <SidebarLink

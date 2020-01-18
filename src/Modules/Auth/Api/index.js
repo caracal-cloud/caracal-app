@@ -19,3 +19,7 @@ export const forgotPassword = async body => {
 export const forgotPasswordConfirm = async body => {
   return client.post('/account/forgot_password_confirm/', body)
 }
+
+export const getAccountStatus = () => {
+  return client.get('/account/get_account_status/')
+}
