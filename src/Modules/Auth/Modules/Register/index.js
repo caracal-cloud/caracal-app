@@ -91,8 +91,8 @@ export function Register() {
             subTitle={`We're redirecting you to our app in ${metadata.count} seconds`}
             extra={[
               <Button
-                type="primary"
                 key="console"
+                intent="primary"
                 onClick={() => navigate('/')}
               >
                 Go to App
