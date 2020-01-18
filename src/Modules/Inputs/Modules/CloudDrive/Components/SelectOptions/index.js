@@ -63,7 +63,41 @@ export function SelectOptions({ form, metadata, ...addDrive }) {
         </Select>
       </Grid>
       <Divider gap={3} />
-      <StorageCheckbox sx={{ mt: 0 }} {...form} />
+      <Grid gridGap={2} gridTemplateColumns="0.8fr 0.8fr 1fr">
+        <Grid gridGap={3} gridTemplateRows="repeat(2, 1fr)">
+          <div>
+            <Styled.h4>X column index</Styled.h4>
+            <InputNumber
+              onChange={val => form.setFieldValue('xColumnIndex', val)}
+              value={form.values.xColumnIndex}
+            />
+          </div>
+          <div>
+            <Styled.h4>Y column index</Styled.h4>
+            <InputNumber
+              onChange={val => form.setFieldValue('yColumnIndex', val)}
+              value={form.values.yColumnIndex}
+            />
+          </div>
+        </Grid>
+        <Grid gridGap={3} gridTemplateRows="repeat(2, 1fr)">
+          <div>
+            <Styled.h4>Date column index</Styled.h4>
+            <InputNumber
+              onChange={val => form.setFieldValue('dateColumnIndex', val)}
+              value={form.values.dateColumnIndex}
+            />
+          </div>
+          <div>
+            <Styled.h4>GZD column index</Styled.h4>
+            <InputNumber
+              onChange={val => form.setFieldValue('gridZoneColumnIndex', val)}
+              value={form.values.gridZoneColumnIndex}
+            />
+          </div>
+        </Grid>
+        <StorageCheckbox sx={{ mt: 0 }} {...form} />
+      </Grid>
       <Divider gap={3} />
       <Grid gridGap={2} gridTemplateColumns="1fr auto auto">
         <div>

@@ -10,7 +10,11 @@ const formOpts = {
     sheetIds: [],
     outputAgol: false,
     outputDatabase: false,
-    outputKml: false
+    outputKml: false,
+    xColumnIndex: 0,
+    yColumnIndex: 0,
+    dateColumnIndex: 0,
+    gridZoneColumnIndex: 0
   },
   validationSchema: yup.object().shape({
     headerRowIndex: yup
