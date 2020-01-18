@@ -167,7 +167,7 @@ export function Collars() {
             <Select.Option value="other">Other</Select.Option>
           </Select>
         </Card>
-        <Card title="Current Accounts" icon="unordered-list">
+        <Card title="Current Accounts" icon="unordered-list" maxHeight={350}>
           <List loading={accounts.metadata.isLoading}>
             {accounts.metadata.isEmpty ? (
               <Empty />
