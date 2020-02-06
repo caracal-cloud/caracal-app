@@ -34,5 +34,5 @@ export const fetchDocs = async (page = 1) => {
 }
 
 export const deleteDoc = body => {
-  return client.post('/drives/google//delete_account/', body)
+  return client.post('/drives/google/delete_account/', body)
 }

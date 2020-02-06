@@ -21,7 +21,7 @@ export function EditAccountModal({ account }) {
       >
         {props => (
           <form onSubmit={props.handleSubmit}>
-            <StorageCheckbox {...props} />
+            <StorageCheckbox {...props} sx={{ mt: 0 }} />
             <Modal.Footer>
               <Button intent="default" onClick={account.handleCloseSettings}>
                 Cancel

@@ -18,6 +18,7 @@ export { Radio } from './Components/Radio'
 export { RadioGroup } from './Components/RadioGroup'
 export { Select } from './Components/Select'
 export { Table } from './Components/Table'
+export { Tabs } from './Components/Tabs'
 
 export { usePrevious } from './Hooks/usePrevious'
 export { useQueryString } from './Hooks/useQueryString'

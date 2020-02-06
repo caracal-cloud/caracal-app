@@ -9,6 +9,9 @@ import { Radios } from 'Modules/Inputs/Modules/Radios'
 import { AccountList } from './Modules/AccountList'
 import { SystemList } from './Modules/SystemList'
 import { CloudDriveCallback } from './Modules/CloudDriveCallback'
+import { Jackal } from './Modules/Jackal'
+import { Phone } from './Modules/Phone'
+
 export { AddButton } from './Components/AddButton'
 export { ItemCard } from './Components/ItemCard'
 
@@ -21,6 +24,8 @@ export function Inputs() {
       <CloudDriveCallback path="/cloud-drive-callback" />
       <Radios path="/radios" />
       <SystemList path="/radios/systems/:id" />
+      <Jackal path="/jackal" />
+      <Phone path="/jackal/:uid" />
       <Redirect from="/" to="/inputs/collars" noThrow />
     </Router>
   )
