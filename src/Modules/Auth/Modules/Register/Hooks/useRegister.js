@@ -44,7 +44,7 @@ const formOpts = {
 
 export function useRegister() {
   const [state, send] = useMachine(registerMachine)
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(5)
 
   const { credentials } = state.context
   const isRegistered = state.matches('registered')
@@ -57,7 +57,7 @@ export function useRegister() {
 
   useEffect(() => {
     if (!isRegistered) return
-    const id = setInterval(() => setCount(R.inc), 1000)
+    const id = setInterval(() => setCount(R.dec), 1000)
     return () => clearInterval(id)
   }, [isRegistered])
 
