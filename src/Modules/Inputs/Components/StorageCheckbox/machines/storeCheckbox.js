@@ -11,7 +11,7 @@ const services = {
 
 const actions = {
   setConnection: assign((ctx, ev) => {
-    return R.assoc('connect', ev.data.isConnected, ctx)
+    return R.assoc('connected', ev.data.isConnected, ctx)
   })
 }
 
