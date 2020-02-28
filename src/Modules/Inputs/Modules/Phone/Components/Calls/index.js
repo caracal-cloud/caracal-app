@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { format, addSeconds } from 'date-fns'
-import uuid from 'uuid/v4'
 
-import { Table, Badge } from 'Modules/Core'
+import * as api from '../../Api'
+import { Badge } from 'Modules/Core'
+import { ResourceTable } from '../ResourceTable'
 
 function formattedTime(seconds) {
   var helperDate = addSeconds(new Date(0), seconds)
@@ -47,17 +48,13 @@ const columns = [
   }
 ]
 
-export const Calls = ({ data }) => {
+export const Calls = ({ uid }) => {
   return (
-    <Table
-      rowKey={() => uuid()}
+    <ResourceTable
       columns={columns}
-      dataSource={data}
-      size="large"
-      sx={{
-        '.ant-pagination': {
-          px: 3
-        }
+      fetchResource={async ctx => {
+        const res = await api.getCalls(uid, ctx.page)
+        return res.data
       }}
     />
   )

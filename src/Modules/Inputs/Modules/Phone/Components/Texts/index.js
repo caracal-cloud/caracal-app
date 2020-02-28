@@ -1,9 +1,10 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
 import { format } from 'date-fns'
-import uuid from 'uuid/v4'
 
-import { Table, Badge } from 'Modules/Core'
+import * as api from '../../Api'
+import { Badge } from 'Modules/Core'
+import { ResourceTable } from '../ResourceTable'
 
 const columns = [
   {
@@ -42,17 +43,13 @@ const columns = [
   }
 ]
 
-export const Texts = ({ data }) => {
+export const Texts = ({ uid }) => {
   return (
-    <Table
-      rowKey={() => uuid()}
+    <ResourceTable
       columns={columns}
-      dataSource={data}
-      size="large"
-      sx={{
-        '.ant-pagination': {
-          px: 3
-        }
+      fetchResource={async ctx => {
+        const res = await api.getTexts(uid, ctx.page)
+        return res.data
       }}
     />
   )
