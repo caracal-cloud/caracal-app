@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import * as R from 'ramda'
 import { jsx } from 'theme-ui'
 import { Formik } from 'formik'
 
@@ -33,6 +34,13 @@ export function Jackal(props) {
 
   return (
     <PrivateLayout title="Jackal" breadcrumbs={breadcrumbs}>
+      
+      <div sx={{ width: "98%", textAlign: 'right', fontSize: 1, mb: 1, mr: 1 }}>
+        <a href={R.path(['metadata', 'data', 'csvUrl'], account)}>
+          Download Excel
+        </a>
+      </div>
+
       <EditAccountModal account={account} />
       <Modal
         title={phone.metadata.modalTitle}
@@ -44,6 +52,7 @@ export function Jackal(props) {
           {form => <PhoneModalForm phone={phone} form={form} />}
         </Formik>
       </Modal>
+
       <Table
         rowKey="uid"
         bordered
@@ -69,7 +78,7 @@ export function Jackal(props) {
               />
             }
           >
-            Phone List
+            Phones
           </Table.Title>
         )}
       />

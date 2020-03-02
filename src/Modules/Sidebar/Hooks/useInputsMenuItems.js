@@ -9,7 +9,8 @@ export function useInputsMenuItems() {
   const menuItems = [
     { text: 'Collars', to: '/inputs/collars' },
     { text: 'Cloud Drives', to: '/inputs/cloud-drive' },
-    { text: 'Radios', to: '/inputs/radios' }
+    // { text: 'Radios', to: '/inputs/radios' }
+    { text: 'REST API', to: '/inputs/rest-api' }
   ]
 
   return enabled

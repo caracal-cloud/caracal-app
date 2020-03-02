@@ -28,7 +28,7 @@ export const Alerts = () => {
 
   const { form } = addModal
   const { isPhoneSelected } = addModal.metadata
-  const inputType = isPhoneSelected ? 'phone' : 'email'
+  const inputType = isPhoneSelected ? 'Phone' : 'Email'
 
   return (
     <Fragment>
@@ -49,7 +49,7 @@ export const Alerts = () => {
               sx={{ mt: '6px' }}
               type={inputType}
               leftIcon={isPhoneSelected ? 'phone' : 'mail'}
-              placeholder={`Your ${inputType}...`}
+              placeholder={`${inputType}`}
             />
           </Grid>
           <Modal.Footer>
