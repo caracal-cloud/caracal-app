@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui'
-import uuid from 'uuid/v4'
 
-import { Table } from 'Modules/Core'
+import * as api from '../../Api'
+import { ResourceTable } from '../ResourceTable'
 
 const columns = [
   {
@@ -23,17 +23,13 @@ const columns = [
   }
 ]
 
-export const Contacts = ({ data }) => {
+export const Contacts = ({ uid }) => {
   return (
-    <Table
-      rowKey={() => uuid()}
+    <ResourceTable
       columns={columns}
-      dataSource={data}
-      size="large"
-      sx={{
-        '.ant-pagination': {
-          px: 3
-        }
+      fetchResource={async ctx => {
+        const res = await api.getContacts(uid, ctx.page)
+        return res.data
       }}
     />
   )

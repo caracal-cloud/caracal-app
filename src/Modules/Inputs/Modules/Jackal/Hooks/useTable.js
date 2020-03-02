@@ -33,12 +33,12 @@ export function useTable({ onEditItem } = { onEditItem: () => null }) {
       },
       {
         title: 'Last reported',
-        dataIndex: 'datetimeLastPosition',
-        key: 'datetimeLastPosition',
+        dataIndex: 'datetimeLastUpdate',
+        key: 'datetimeLastUpdate',
         defaultSortOrder: 'descend',
         sorter: (a, b) => {
-          const dateA = dayjs(a.datetimeLastPosition).unix()
-          const dateB = dayjs(b.datetimeLastPosition).unix()
+          const dateA = dayjs(a.datetimeLastUpdate).unix()
+          const dateB = dayjs(b.datetimeLastUpdate).unix()
           return dateA - dateB
         },
         render: str => {

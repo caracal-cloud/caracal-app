@@ -24,7 +24,7 @@ const breadcrumbs = deviceId => [
 ]
 
 export const Phone = ({ uid }) => {
-  const { metadata } = usePhone(uid)
+  const { metadata } = usePhone({ uid })
   const account = useAccount({ uid })
   const { phone } = metadata
   const deviceId = phone ? phone.deviceId : null
@@ -85,16 +85,16 @@ export const Phone = ({ uid }) => {
                 defaultActiveKey="1"
               >
                 <Tabs.TabPane tab="Calls" key="1">
-                  <Calls data={phone.calls} />
+                  <Calls uid={uid} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Texts" key="2">
-                  <Texts data={phone.texts} />
+                  <Texts uid={uid} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Contacts" key="4">
-                  <Contacts data={phone.contacts} />
+                  <Contacts uid={uid} />
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Locations" key="3">
-                  <Locations data={phone.locations} />
+                  <Locations uid={uid} />
                 </Tabs.TabPane>
               </Tabs>
             </Card>
