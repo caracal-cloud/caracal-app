@@ -20,7 +20,7 @@ const breadcrumbs = deviceId => [
   { icon: 'home', to: '/' },
   { text: 'Sources', to: '/inputs' },
   { text: 'Jackal', to: '/inputs/jackal' },
-  { text: `${deviceId || ''}` }
+  { text: `Phone ${deviceId || ''}` }
 ]
 
 export const Phone = ({ uid }) => {
@@ -38,6 +38,11 @@ export const Phone = ({ uid }) => {
         <Spin />
       ) : (
         <Fragment>
+          <div sx={{ width: 800, textAlign: 'right', fontSize: 1, mb: 3 }}>
+            <a href={R.path(['metadata', 'data', 'csvUrl'], account)}>
+              Download CSV
+            </a>
+          </div>
           <Grid gap={2} gridTemplateColumns="repeat(2, 400px)">
             <Card>
               <div sx={{ display: 'flex' }}>
@@ -45,13 +50,13 @@ export const Phone = ({ uid }) => {
                   <h2 sx={styles.cardTitle}>
                     <Icon type="usb" size={20} sx={{ mr: 2, color: 'gray' }} />
                     {phone.deviceId}
-                    {phone.name && ` - ${phone.name}`}
+                    {phone.name && `- ${phone.name}`}
                   </h2>
                   <h3 sx={styles.cardDescription}>{phone.description}</h3>
                 </div>
                 <div sx={{ display: 'flex', alignItems: 'center', ml: 4 }}>
                   <Badge
-                    type={phone.status === 'deployed' ? 'success' : 'warning'}
+                    type={phone.status === 'active' ? 'success' : 'warning'}
                   >
                     {phone.status}
                   </Badge>

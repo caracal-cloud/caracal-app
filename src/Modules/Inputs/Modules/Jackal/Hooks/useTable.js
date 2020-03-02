@@ -46,7 +46,6 @@ export function useTable({ onEditItem } = { onEditItem: () => null }) {
           return date.format('YYYY-MM-DD HH:mm')
         }
       },
-      /*
       {
         title: 'Distance 24h',
         dataIndex: 'distanceDay',
@@ -55,7 +54,6 @@ export function useTable({ onEditItem } = { onEditItem: () => null }) {
         sorter: (a, b) => a.distanceDay - b.distanceDay,
         render: text => (text ? `${text} km` : '---')
       },
-      */
       {
         width: 100,
         title: 'Status',
@@ -63,7 +61,7 @@ export function useTable({ onEditItem } = { onEditItem: () => null }) {
         key: 'status',
         render: text => (
           <div sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Badge type={text === 'deployed' ? 'success' : 'warning'}>
+            <Badge type={text === 'active' ? 'success' : 'warning'}>
               {text}
             </Badge>
           </div>
