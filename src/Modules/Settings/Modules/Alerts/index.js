@@ -33,7 +33,7 @@ export const Alerts = () => {
   return (
     <Fragment>
       <Modal
-        title="Adding Recipient"
+        title="Add Alert Recipient"
         visible={addModal.metadata.isOpened}
         onCancel={addModal.handleClose}
         footer={null}
@@ -49,7 +49,7 @@ export const Alerts = () => {
               sx={{ mt: '6px' }}
               type={inputType}
               leftIcon={isPhoneSelected ? 'phone' : 'mail'}
-              placeholder={`Your ${inputType}...`}
+              placeholder={`${inputType}`}
             />
           </Grid>
           <Modal.Footer>

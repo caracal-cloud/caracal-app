@@ -24,7 +24,7 @@ export function ArcgisOnline() {
         <Card
           sx={styles.card}
           icon="setting"
-          title="Configuration"
+          title="ArcGIS Online Connection"
           titleRight={
             !metadata.isChecking && <Status status={metadata.status} />
           }

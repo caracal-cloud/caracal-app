@@ -20,7 +20,7 @@ const breadcrumbs = deviceId => [
   { icon: 'home', to: '/' },
   { text: 'Sources', to: '/inputs' },
   { text: 'Jackal', to: '/inputs/jackal' },
-  { text: `Phone ${deviceId || ''}` }
+  { text: `${deviceId || ''}` }
 ]
 
 export const Phone = ({ uid }) => {

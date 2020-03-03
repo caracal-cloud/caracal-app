@@ -77,7 +77,7 @@ export function Jackal(props) {
               />
             }
           >
-            Phone List
+            Phones
           </Table.Title>
         )}
       />

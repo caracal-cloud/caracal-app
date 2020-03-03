@@ -26,7 +26,7 @@ export function RestApi() {
         gridTemplateColumns={['1fr', '1fr', '1.5fr 1fr', '600px 400px']}
       >
         <Card title="Add New Account" icon="plus-square">
-            The REST API doesn't yet have a frontend! To connect your IoT devices or mobile applications email contact@caracal.cloud and we'll give you a write key and instructions.
+            The REST API doesn't yet have a frontend, but you can still connect your IoT devices or mobile applications! Just email contact@caracal.cloud and we'll give you a write key and instructions.
           <Divider gap={3} />
         </Card>
 
