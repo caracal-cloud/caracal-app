@@ -38,11 +38,6 @@ export const Phone = ({ uid }) => {
         <Spin />
       ) : (
         <Fragment>
-          <div sx={{ width: 800, textAlign: 'right', fontSize: 1, mb: 3 }}>
-            <a href={R.path(['metadata', 'data', 'csvUrl'], account)}>
-              Download CSV
-            </a>
-          </div>
           <Grid gap={2} gridTemplateColumns="repeat(2, 400px)">
             <Card>
               <div sx={{ display: 'flex' }}>
@@ -56,7 +51,7 @@ export const Phone = ({ uid }) => {
                 </div>
                 <div sx={{ display: 'flex', alignItems: 'center', ml: 4 }}>
                   <Badge
-                    type={phone.status === 'active' ? 'success' : 'warning'}
+                    type={phone.status === 'deployed' ? 'success' : 'warning'}
                   >
                     {phone.status}
                   </Badge>

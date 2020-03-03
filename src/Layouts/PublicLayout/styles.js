@@ -4,7 +4,7 @@ export let wrapper = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: `url('${process.env.PUBLIC_URL + '/elephants.jpg'}')`,
+  background: '#EBF1F5', //`url('${process.env.PUBLIC_URL + '/elephants.jpg'}')`,
   backgroundSize: 'cover'
 }
 
