@@ -1,4 +1,4 @@
-# Caracal PWA
+# Caracal App
 
 ## Available Scripts
 
@@ -15,3 +15,8 @@ Launches the test runner in the interactive watch mode.
 ### `yarn build`
 
 Builds the app for production to the `build` folder.
+
+
+### `yarn deploy`
+
+Deploys the app to AWS.
