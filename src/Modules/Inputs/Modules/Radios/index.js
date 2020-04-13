@@ -17,7 +17,7 @@ import { useRadiosSystems } from './Hooks/useRadiosSystems'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources' },
   { text: 'Radios' }
 ]
 

@@ -18,7 +18,7 @@ import { SelectOptions } from './Components/SelectOptions'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources' },
   { text: 'Cloud Drive' }
 ]
 

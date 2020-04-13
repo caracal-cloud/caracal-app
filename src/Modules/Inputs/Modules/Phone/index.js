@@ -18,7 +18,7 @@ import { useAccount } from '../Jackal/Hooks/useAccount'
 
 const breadcrumbs = deviceId => [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources'},
   { text: 'Jackal', to: '/inputs/jackal' },
   { text: `${deviceId || ''}` }
 ]

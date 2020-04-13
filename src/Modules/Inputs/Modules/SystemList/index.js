@@ -16,7 +16,7 @@ import { SystemForm } from './Components/SystemForm'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources' },
   { text: 'Radios', to: '/inputs/radios' },
   { text: 'Radio Systems' }
 ]

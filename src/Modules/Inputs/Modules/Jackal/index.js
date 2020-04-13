@@ -15,7 +15,7 @@ import { useAccount } from './Hooks/useAccount'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources' },
   { text: 'Jackal' }
 ]
 

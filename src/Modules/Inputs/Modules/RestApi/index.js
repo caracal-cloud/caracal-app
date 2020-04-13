@@ -12,7 +12,7 @@ import {
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources'},
   { text: 'REST API' }
 ]
 

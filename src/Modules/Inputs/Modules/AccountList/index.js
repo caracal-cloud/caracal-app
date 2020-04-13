@@ -15,7 +15,7 @@ import { IndividualForm } from './Components/IndividualForm'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources', to: '/inputs' },
+  { text: 'Sources' },
   { text: 'Collars', to: '/inputs/collars' },
   { text: 'Account List' }
 ]
