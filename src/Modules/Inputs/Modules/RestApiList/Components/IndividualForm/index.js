@@ -24,11 +24,7 @@ export function IndividualForm({ individual, form }) {
     if (!prevItem || (item && item.uid !== prevItem.uid)) {
       form.setValues({
         name: item.name,
-        sex: item.sex,
-        status: item.status,
-        ...(item.subtype && {
-          subtype: item.subtype
-        })
+        description: item.description
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,32 +50,12 @@ export function IndividualForm({ individual, form }) {
           label="Name"
           size="default"
         />
-        <RadioGroup {...formUtils.getRadioProps('sex', form)} label="Sex">
-          <Radio value="female">Female</Radio>
-          <Radio value="male">Male</Radio>
-        </RadioGroup>
-        <Select
-          {...formUtils.getSelectProps('subtype', form)}
-          allowClear
-          noMargin
-          label="Type"
-          placeholder="Select type"
-        >
-          <Select.Option value="forest">Forest</Select.Option>
-          <Select.Option value="hybrid">Hybrid</Select.Option>
-          <Select.Option value="savannah">Savannah</Select.Option>
-          <Select.Option value="other">Other</Select.Option>
-        </Select>
-        <Select
-          {...formUtils.getSelectProps('status', form)}
-          noMargin
-          label="Status"
-          placeholder="Select status"
-        >
-          <Select.Option value="active">Active</Select.Option>
-          <Select.Option value="broken">Broken</Select.Option>
-          <Select.Option value="inactive">Inactive</Select.Option>
-        </Select>
+        <Input
+          {...formUtils.getInputProps('description', form)}
+          type="text"
+          label="Description"
+          size="default"
+        />
       </Grid>
       <Modal.Footer>
         <Button intent="default" onClick={individual.handleCloseModal}>

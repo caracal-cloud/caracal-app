@@ -38,6 +38,31 @@ const types = {
   pending: 'warning'
 }
 
+const code = `# Step 1: Obtain access and refresh tokens
+curl --request POST 'https://api.caracal.cloud/account/login/' 
+--form 'email=YOUR_EMAIL' \
+--form 'password=YOUR_PASSWORD'
+
+# Step 2 (optional): Refresh access token
+curl --request POST 'https://api.caracal.cloud/account/refresh/' 
+--form 'refresh_token=YOUR_REFRESH_TOKEN'
+
+# Step 3: Add a record
+curl --request POST 'https://api.caracal.cloud/source/add_record/' 
+--header 'Authorization: JWT YOUR_ACCESS_TOKEN'
+--header 'Content-Type: application/json' 
+--data-raw '{
+	"write_key": "YOUR_WRITE_KEY",
+	"datetime_recorded": "2020-01-01 10:20:30",
+	"lat": 3.141592,
+	"lon": 6.535897,
+	"device_id": "YOUR_DEVICE_ID",
+	"alt_m": 5.00,
+	"speed_kmh": 10.00,
+	"temp_c": 20.00
+}
+`
+
 export function RestApi() {
   const sources = useCustomSources()
 
@@ -130,9 +155,9 @@ export function RestApi() {
 
         <Card>
           <CopyBlock
-            text="x = y + 10"
-            language="Python"
-            showLineNumbers={true}
+            text={code}
+            language="python"
+            showLineNumbers={false}
             theme={theme}
             wrapLines
           />

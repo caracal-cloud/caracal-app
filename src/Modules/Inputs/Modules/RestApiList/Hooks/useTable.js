@@ -28,6 +28,25 @@ export function useTable({ onEditItem }) {
         key: 'description'
       },
       {
+        title: 'Last Reported',
+        dataIndex: 'datetimeLastPosition',
+        key: 'datetimeLastPosition',
+        defaultSortOrder: 'descend',
+        sorter: (a, b) => {
+          const dateA = dayjs(a.datetimeLastPosition).unix()
+          const dateB = dayjs(b.datetimeLastPosition).unix()
+          return dateA - dateB
+        },
+        render: dateString => {
+          if (dateString) {
+            const date = dayjs(dateString)
+            return date.format('YYYY-MM-DD HH:mm')
+          } else {
+            return ''
+          }
+        }
+      },
+      {
         width: 50,
         dataIndex: '',
         key: 'x',

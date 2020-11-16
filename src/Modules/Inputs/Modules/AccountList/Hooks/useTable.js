@@ -40,7 +40,7 @@ export function useTable({ onEditItem }) {
         render: text => (text ? humanize(text) : '---')
       },
       {
-        title: 'Last reported',
+        title: 'Last Reported',
         dataIndex: 'datetimeLastPosition',
         key: 'datetimeLastPosition',
         defaultSortOrder: 'descend',
