@@ -5,11 +5,13 @@ import { Popconfirm } from 'antd'
 import { Button, List } from 'Modules/Core'
 import * as styles from './styles'
 
-export function ItemCard({ onDelete, onView, ...props }) {
+export function ItemCard({ onDelete, onView, onCopy, ...props }) {
   return (
     <List.Item
       rightItem={
         <Button.Group>
+          {onView && <Button icon="eye" intent="default" onClick={onView} />}
+          {onCopy && <Button icon="copy" intent="default" onClick={onCopy} />}
           {onDelete && (
             <Popconfirm
               title="Are you sure delete this?"
@@ -20,7 +22,6 @@ export function ItemCard({ onDelete, onView, ...props }) {
               <Button icon="delete" intent="default" />
             </Popconfirm>
           )}
-          {onView && <Button icon="eye" intent="default" onClick={onView} />}
         </Button.Group>
       }
     >

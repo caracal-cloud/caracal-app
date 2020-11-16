@@ -27,8 +27,8 @@ import { useAddSavannah } from './Hooks/useAddSavannah'
 
 const breadcrumbs = [
   { icon: 'home', to: '/' },
-  { text: 'Sources'},
-  { text: 'Collars' }
+  { text: 'Sources' },
+  { text: 'Collar Accounts' }
 ]
 
 const types = {

@@ -4,7 +4,7 @@ import * as yup from 'yup'
 import { accountMachine } from '../../../Machines/accountMachine'
 import * as api from '../Api'
 
-const formOpts = {
+let formOpts = {
   initialValues: {
     outputAgol: false,
     outputKml: false
@@ -28,6 +28,7 @@ export function useAccount({ uid }) {
             return res.data
           },
           updateAccount: async (_, ev) => {
+            console.log(ev.data)
             return api.updateAccount(ev.data)
           }
         }
@@ -38,7 +39,6 @@ export function useAccount({ uid }) {
   if (data && data.outputs) {
     formOpts.initialValues = { ...formOpts.initialValues, ...data.outputs }
   }
-
   const isLoading = state.matches('fetching.loading')
   const isShowingSettings = state.matches('editting')
   const isSubmitting = state.matches('editting.submitting.loading')
@@ -52,11 +52,10 @@ export function useAccount({ uid }) {
   }
 
   function handleSubmit(values) {
-    console.log('values', values)
     send('SUBMIT', {
       data: {
         ...values,
-        accountUid: uid
+        sourceUid: uid
       }
     })
   }

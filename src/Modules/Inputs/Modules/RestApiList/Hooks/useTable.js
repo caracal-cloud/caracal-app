@@ -22,22 +22,10 @@ export function useTable({ onEditItem }) {
         key: 'name'
       },
       {
-        width: 100,
-        title: 'Sex',
-        dataIndex: 'sex',
-        key: 'sex',
-        render: text => {
-          if (!text) return '---'
-          const icon = text === 'female' ? 'woman' : 'man'
-          return <Icon type={icon} sx={{ fontSize: 25 }} />
-        }
-      },
-      {
-        width: 100,
-        title: 'Type',
-        dataIndex: 'subtype',
-        key: 'subtype',
-        render: text => (text ? humanize(text) : '---')
+        width: 200,
+        title: 'Description',
+        dataIndex: 'description',
+        key: 'description'
       },
       {
         title: 'Last Reported',
@@ -49,31 +37,14 @@ export function useTable({ onEditItem }) {
           const dateB = dayjs(b.datetimeLastPosition).unix()
           return dateA - dateB
         },
-        render: str => {
-          const date = dayjs(str)
-          return date.format('YYYY-MM-DD HH:mm')
+        render: dateString => {
+          if (dateString) {
+            const date = dayjs(dateString)
+            return date.format('YYYY-MM-DD HH:mm')
+          } else {
+            return ''
+          }
         }
-      },
-      {
-        title: 'Distance 24h',
-        dataIndex: 'distanceDay',
-        key: 'distanceDay',
-        defaultSortOrder: 'descend',
-        sorter: (a, b) => a.distanceDay - b.distanceDay,
-        render: text => `${text} km`
-      },
-      {
-        width: 100,
-        title: 'Status',
-        dataIndex: 'status',
-        key: 'status',
-        render: text => (
-          <div sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Badge type={text === 'active' ? 'success' : 'warning'}>
-              {text}
-            </Badge>
-          </div>
-        )
       },
       {
         width: 50,

@@ -43,9 +43,7 @@ client.interceptors.request.use(config => {
 })
 
 client.interceptors.response.use(
-  data => {
-    return data
-  },
+  data => data,
   error => {
     const errType = R.path(['response', 'data', 'error'], error)
     return errType === 'access_token_revoked'

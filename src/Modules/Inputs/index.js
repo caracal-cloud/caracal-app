@@ -12,6 +12,7 @@ import { CloudDriveCallback } from './Modules/CloudDriveCallback'
 import { Jackal } from './Modules/Jackal'
 import { Phone } from './Modules/Phone'
 import { RestApi } from './Modules/RestApi'
+import { RestApiList } from './Modules/RestApiList'
 
 export { AddButton } from './Components/AddButton'
 export { ItemCard } from './Components/ItemCard'
@@ -25,6 +26,7 @@ export function Inputs() {
       <CloudDriveCallback path="/cloud-drive-callback" />
       <Radios path="/radios" />
       <RestApi path="/rest-api" />
+      <RestApiList path="/rest-api/sources/:id" />
       <SystemList path="/radios/systems/:id" />
       <Jackal path="/jackal" />
       <Phone path="/jackal/:uid" />
