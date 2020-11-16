@@ -3,7 +3,7 @@ import { jsx } from 'theme-ui'
 import { Formik } from 'formik'
 
 import { PrivateLayout } from 'Layouts/PrivateLayout'
-import { Table, Button, Modal } from 'Modules/Core'
+import { Card, Table, Button, Modal } from 'Modules/Core'
 
 import { useIndividual } from './Hooks/useIndividual'
 import { useAccount } from './Hooks/useAccount'
@@ -16,13 +16,14 @@ import { IndividualForm } from './Components/IndividualForm'
 const breadcrumbs = [
   { icon: 'home', to: '/' },
   { text: 'Sources' },
-  { text: 'Collar Accounts', to: '/inputs/collars' },
-  { text: 'Collars' }
+  { text: 'REST API', to: '/inputs/rest-api' },
+  { text: 'Source' }
 ]
 
-export function AccountList(props) {
+export function RestApiList(props) {
   const { id: uid } = props
   const account = useAccount({ uid })
+
   const list = useList({ uid })
 
   const individual = useIndividual({
@@ -34,7 +35,7 @@ export function AccountList(props) {
   })
 
   return (
-    <PrivateLayout title="Collars" breadcrumbs={breadcrumbs}>
+    <PrivateLayout title="REST API Sources" breadcrumbs={breadcrumbs}>
       <EditAccountModal account={account} />
       <Modal
         title={individual.metadata.modalTitle}
@@ -46,6 +47,7 @@ export function AccountList(props) {
           {form => <IndividualForm individual={individual} form={form} />}
         </Formik>
       </Modal>
+
       <Table
         rowKey="uid"
         bordered
@@ -71,7 +73,7 @@ export function AccountList(props) {
               />
             }
           >
-            Individuals
+            Devices
           </Table.Title>
         )}
       />

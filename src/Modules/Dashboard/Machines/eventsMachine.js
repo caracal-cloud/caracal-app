@@ -38,7 +38,7 @@ const machine = Machine({
           onEntry: 'setData'
         },
         failure: {
-          type: 'fynal'
+          type: 'final'
         }
       },
       onDone: {
