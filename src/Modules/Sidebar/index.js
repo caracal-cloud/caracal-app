@@ -18,6 +18,9 @@ export function Sidebar(props) {
         <SidebarLink icon="dashboard" to="/dashboard">
           Dashboard
         </SidebarLink>
+        <SidebarLink icon="global" to="/map">
+          Map
+        </SidebarLink>
         <SidebarLink to="/inputs" icon="download" menuItems={inputsMenuItems}>
           Sources
         </SidebarLink>
